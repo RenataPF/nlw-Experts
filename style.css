@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/*vai limpar os dados padrões e passa a valer o que esta nessa conf. do root*/
+*,:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Inter', sans-serif;
+  /*regras de fonte padrão para demais navegadores*/
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body{
+  background-color: #0F172A;
+}
+
+main {
+  max-width: 640px;
+  padding: 20px;
+  margin: 0 auto 64px;
+}
+
+header{
+  margin-top:64px ;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #334155;
+}
+
+header h1 {
+  margin-top: 24px;
+  font-size: 30px;
+  color: #f1f5f9;
+}
+/* cria o contador de itens de perguntas*/
+#quiz{
+counter-reset: quiz-item;
+
+}
+.quiz-item{
+  margin-top: 24px;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  /*configuração usada para não transbordar as configurações dos itens filhos*/
+  overflow: hidden;
+}
+
+.quiz-item h3{
+  padding: 16px 20px;
+  color: #e2e8f0;
+  /*faz o alinhamento do número com a pergunta*/
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background-color: #1e293B;
+}
+
+/* insere os números nas perguntas usando o contador do quiz*/
+.quiz-item h3:before{
+  counter-increment: quiz-item;
+  content: counter(quiz-item);
+
+  background-color: #475569;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  border-radius: 50%; /* faz o arredondamento da borda*/
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;/*ajusta para que a borda não seja redimencionada conforme for redimencionada a tela*/
+
+
+}
+
+.quiz-item dl{
+  padding: 20px 24px;
+  /* para usar o gap precisa usar o tipo grid no display. o gap gera um espaço entre os itens do dl*/
+  display: grid;
+  gap: 8px;
+}
+.quiz-item dl dt{
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #e2e8f0;  
+}
+
+input{
+  /*retira todas as configurações existentes do navegador*/
+  all: unset;
+
+  border: 1px solid #94a3b8;
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%; 
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+input:checked{
+  border: 1px solid #A3E635;
+}
+/*preenchimento ao clicar nas opções*/
+input:checked:before{
+  content: "";
+  width: 10px;
+  height: 10px;
+
+  background-color: #A3E635;
+  border-radius: 50%;
+}
+
+
+#acertos{
+  /*alinhamento do texto */
+  text-align: center;
+  /*cor de preenchimento da caixa*/
+  background-color: #A3E635;
+  /*posicionamento da caixa*/
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  /*largura*/
+  width: 100%;
+  /*preenchimento da caixa*/
+  padding: 12px;
+}
+
+/* seleção universal de todos os elementos
+* {
+ border: 1px solid red;
+}*/
